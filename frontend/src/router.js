@@ -5,12 +5,25 @@ import Dashboard from "./views/Dashboard.vue";
 import Inventory from "./views/Inventory/Inventory.vue";
 import InventoryItemDetail from "./views/Inventory/InventoryItemDetail.vue";
 import InventoryItemForm from "./views/Inventory/InventoryItemForm.vue";
+import Sell from "./views/Sell/Sell.vue";
+import SellMessages from "./views/Sell/SellMessages.vue";
+import SellOffers from "./views/Sell/SellOffers.vue";
+import SellPerformance from "./views/Sell/SellPerformance.vue";
 
 const routes = [
 	{path: "/", component: Dashboard},
 	{path: "/dashboard", component: Dashboard},
 	{path: "/buy", component: Dashboard}, // placeholder
-	{path: "/sell", component: Dashboard}, // placeholder
+	{path: "/sell", component: Sell},
+	{path: "/sell/listings", component: Sell},
+	{path: "/sell/messages", component: SellMessages},
+	{path: "/sell/offers", component: SellOffers},
+	{path: "/sell/performance", component: SellPerformance},
+	{path: "/sell/listing/new", component: Sell}, // placeholder
+	{path: "/sell/listing/:id", component: Sell}, // placeholder
+	{path: "/sell/listing/:id/edit", component: Sell}, // placeholder
+	{path: "/sell/listing/:id/messages", component: Sell}, // placeholder
+	{path: "/sell/listing/:id/offers", component: Sell}, // placeholder
 	{path: "/inventory", component: Inventory},
 	{path: "/inventory/products", component: Inventory},
 	{path: "/inventory/categories", component: Inventory}, // placeholder
