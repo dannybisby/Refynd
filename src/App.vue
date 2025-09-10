@@ -5,6 +5,7 @@ import { useStore } from 'vuex'
 import AppShell from './components/AppShell.vue'
 import CommandPalette from './components/CommandPalette.vue'
 import ToastContainer from './components/ToastContainer.vue'
+import HelpOverlay from './components/HelpOverlay.vue'
 
 const store = useStore()
 
@@ -22,6 +23,7 @@ const darkMode = computed(() => store.state.settings.darkMode)
     </AppShell>
     <CommandPalette />
     <ToastContainer />
+    <HelpOverlay />
   </div>
 </template>
 
