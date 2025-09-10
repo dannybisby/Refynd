@@ -10,13 +10,19 @@
                         class="border rounded px-2 py-1" />
                 </div>
 
-                <div class="flex items-center gap-2">
-                    <label class="text-sm text-gray-600">Rows:</label>
-                    <select v-model.number="perPage" class="border rounded px-2 py-1">
-                        <option :value="10">10</option>
-                        <option :value="25">25</option>
-                        <option :value="50">50</option>
-                    </select>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <label class="text-sm text-gray-600">Rows:</label>
+                        <select v-model.number="perPage" class="border rounded px-2 py-1">
+                            <option :value="10">10</option>
+                            <option :value="25">25</option>
+                            <option :value="50">50</option>
+                        </select>
+                    </div>
+                    <button @click="addNewItem" 
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Add New Item
+                    </button>
                 </div>
             </div>
 
@@ -35,12 +41,15 @@
                                 <th class="px-3 py-2 border">All-in Cost</th>
                                 <th class="px-3 py-2 border">Target Price</th>
                                 <th class="px-3 py-2 border">Actual Price</th>
+                                <th class="px-3 py-2 border">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="(row, idx) in pagedData" :key="idx" class="hover:bg-gray-50">
                                 <td class="px-3 py-2 border">{{ row.dateOfPurchase || '-' }}</td>
-                                <td class="px-3 py-2 border">{{ row.status || '-' }}</td>
+                                <td class="px-3 py-2 border">
+                                    <span :class="getStatusClass(row.status)">{{ row.status || '-' }}</span>
+                                </td>
                                 <td class="px-3 py-2 border">{{ row.itemName || '-' }}</td>
                                 <td class="px-3 py-2 border">{{ row.sku || '-' }}</td>
                                 <td class="px-3 py-2 border">{{ row.brand || '-' }}</td>
@@ -49,9 +58,23 @@
                                 <td class="px-3 py-2 border">{{ formatMoney(row.allInCost) }}</td>
                                 <td class="px-3 py-2 border">{{ formatMoney(row.targetSalesPrice) }}</td>
                                 <td class="px-3 py-2 border">{{ formatMoney(row.actualSalesPrice) }}</td>
+                                <td class="px-3 py-2 border">
+                                    <div class="flex gap-1">
+                                        <button @click="viewItem(row)" 
+                                            class="px-2 py-1 text-xs bg-blue-500 text-white rounded hover:bg-blue-600"
+                                            title="View Details">
+                                            View
+                                        </button>
+                                        <button @click="editItem(row)" 
+                                            class="px-2 py-1 text-xs bg-green-500 text-white rounded hover:bg-green-600"
+                                            title="Edit Item">
+                                            Edit
+                                        </button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr v-if="filtered.length === 0">
-                                <td colspan="10" class="px-3 py-4 text-center text-gray-500">No results</td>
+                                <td colspan="11" class="px-3 py-4 text-center text-gray-500">No results</td>
                             </tr>
                         </tbody>
                     </table>
@@ -113,6 +136,30 @@ export default {
             if (v === null || v === undefined || v === '') return '-'
             if (typeof v !== 'number') return v
             return v.toFixed(2)
+        },
+        getStatusClass(status) {
+            const baseClass = 'px-2 py-1 rounded-full text-xs font-medium '
+            switch (status) {
+                case 'In Stock':
+                    return baseClass + 'bg-green-100 text-green-800'
+                case 'Listed':
+                    return baseClass + 'bg-blue-100 text-blue-800'
+                case 'Sold':
+                    return baseClass + 'bg-gray-100 text-gray-800'
+                case 'Processing':
+                    return baseClass + 'bg-yellow-100 text-yellow-800'
+                default:
+                    return baseClass + 'bg-gray-100 text-gray-800'
+            }
+        },
+        viewItem(item) {
+            this.$router.push(`/inventory/item/${item.id}`)
+        },
+        editItem(item) {
+            this.$router.push(`/inventory/item/${item.id}/edit`)
+        },
+        addNewItem() {
+            this.$router.push('/inventory/item/new')
         }
     },
     mounted() {
