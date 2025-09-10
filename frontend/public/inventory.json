@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "dateOfPurchase": "2024-01-10",
+    "status": "active",
+    "itemName": "Vintage Denim Jacket",
+    "sku": "VDJ001",
+    "brand": "Levi's",
+    "size": "L",
+    "seller": "vintage_lover",
+    "allInCost": 25.50,
+    "targetPrice": 45.00,
+    "actualPrice": null
+  },
+  {
+    "id": 2,
+    "dateOfPurchase": "2024-01-12",
+    "status": "sold",
+    "itemName": "Nike Air Force 1",
+    "sku": "NAF001",
+    "brand": "Nike",
+    "size": "9",
+    "seller": "sneaker_deals",
+    "allInCost": 35.00,
+    "targetPrice": 60.00,
+    "actualPrice": 58.00
+  }
+]

@@ -253,7 +253,7 @@
 </template>
 
 <script>
-import inventoryData from '../../data/inventory.json'
+// import inventoryData from "../../data/inventory.json"
 
 export default {
     name: 'InventoryItemForm',
