@@ -73,13 +73,13 @@
 </template>
 
 <script>
-import data from '../../data/inventory.json'
+// import data from '../../data/inventory.json'
 
 export default {
     name: 'Inventory',
     data() {
         return {
-            raw: data || [],
+            raw: [], // data || [],
             query: '',
             page: 1,
             perPage: 25
