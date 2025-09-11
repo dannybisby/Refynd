@@ -77,16 +77,18 @@
     </div>
     <div class="w-full">
         <InventorySubMenu v-if="activeSub === 'inventory'" />
+        <SellSubMenu v-if="activeSub === 'sell'" />
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import InventorySubMenu from './InventorySubMenu.vue'
+import SellSubMenu from './SellSubMenu.vue'
 
 export default {
     name: 'MainMenu',
-    components: { InventorySubMenu },
+    components: { InventorySubMenu, SellSubMenu },
     data() {
         return {
             menuItems: [
@@ -94,6 +96,7 @@ export default {
                 { label: 'Buy', to: '/buy' },
                 { label: 'Sell', to: '/sell' },
                 { label: 'Inventory', to: '/inventory' },
+                { label: 'Shipping', to: '/shipping' },
                 { label: 'Analytics', to: '/analytics' }
             ]
         }
