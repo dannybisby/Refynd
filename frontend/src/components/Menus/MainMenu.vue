@@ -96,6 +96,7 @@ export default {
                 { label: 'Buy', to: '/buy' },
                 { label: 'Sell', to: '/sell' },
                 { label: 'Inventory', to: '/inventory' },
+                { label: 'Shipping', to: '/shipping' },
                 { label: 'Analytics', to: '/analytics' }
             ]
         }
