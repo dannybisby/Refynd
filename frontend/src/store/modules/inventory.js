@@ -1,7 +1,7 @@
-import inventoryData from '../../data/inventory.json'
+// import inventoryData from '../../data/inventory.json'
 
 const state = () => ({
-  items: [...inventoryData],
+  items: [], // [...inventoryData],
   currentItem: null,
   loading: false,
   searchQuery: '',

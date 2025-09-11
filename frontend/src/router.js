@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from "vue-router";
 
 import AccountLogin from "./views/Account/AccountLogin.vue";
 import Dashboard from "./views/Dashboard.vue";
+import Buy from "./views/Buy.vue";
 import Inventory from "./views/Inventory/Inventory.vue";
 import UIComponentsDemo from "./views/UIComponentsDemo.vue";
 import InventoryItemDetail from "./views/Inventory/InventoryItemDetail.vue";
@@ -19,7 +20,7 @@ import ShippingForm from "./views/Shipping/ShippingForm.vue";
 const routes = [
 	{path: "/", component: Dashboard},
 	{path: "/dashboard", component: Dashboard},
-	{path: "/buy", component: Dashboard}, // placeholder
+	{path: "/buy", component: Buy},
 	{path: "/sell", component: Sell},
 	{path: "/sell/listings", component: Sell},
 	{path: "/sell/messages", component: SellMessages},
